@@ -5,10 +5,11 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private Data data;
     [SerializeField] private Location spawnLocation;
-    [SerializeField] private PlayerControlelr player;
+    [SerializeField] private PlayerController player;
     void Start()
     {
-        data = FindObjectOfType<Data>().GetComponent<Data>();
+        player = FindObjectOfType<PlayerController>();
+        data = FindObjectOfType<Data>();
         spawnLocation = GameObject.Find(data.GetCurrentLocation()).GetComponent<Location>();
         player.transform.position = spawnLocation.GetSpawnPoint().position;
     }
