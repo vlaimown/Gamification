@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,14 +24,14 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(horizontalDirection, verticalDirection);
 
-        if (direction != Vector2.zero)
+        if (direction != Vector2.zero && !IsMouseOverUI())
         {
             moveTo = false;
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
             playerMovement.KeyMove(direction);
         }
 
-        if (Input.GetMouseButton(0) && direction == Vector2.zero)
+        if (Input.GetMouseButton(0) && direction == Vector2.zero && !IsMouseOverUI())
         {
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.rotation = Quaternion.LookRotation(Vector3.forward, target - new Vector2(transform.position.x, transform.position.y));
@@ -39,5 +40,10 @@ public class PlayerController : MonoBehaviour
 
         if (moveTo)
             playerMovement.MouseMove(target);
+    }
+
+    private bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
