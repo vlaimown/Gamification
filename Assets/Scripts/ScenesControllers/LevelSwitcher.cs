@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoToNextLvl : MonoBehaviour
+public class LevelSwitcher : MonoBehaviour
 {
     Scene currentScene;
     string currentSceneName;
