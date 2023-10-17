@@ -13,6 +13,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        if (canvasDialogue == null)
+            Debug.Log($"Не назначен canvasDialogue на {gameObject.name}");
+
         queueSentences = new Queue<string>();
     }
 

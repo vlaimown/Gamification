@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class WorldMapController : MonoBehaviour
@@ -10,6 +11,6 @@ public class WorldMapController : MonoBehaviour
 
     public void SelectLocation()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(EventSystem.current.currentSelectedGameObject.name);
     }
 }
