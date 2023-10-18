@@ -1,10 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Location : MonoBehaviour
 {
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Button locationButton;
+    [SerializeField] private Image unavailableSprite;
 
-    public Transform GetSpawnPoint() => spawnPoint;
+    private void Start()
+    {
+        if (unavailableSprite.gameObject.activeSelf)
+            locationButton.interactable = false;
+        else
+            locationButton.interactable = true;
+    }
+
+    public void SetAvailable()
+    {
+        locationButton.interactable |= true;
+        unavailableSprite.gameObject.SetActive(false);
+    }
+
+    public Button GetLocation()
+    {
+        return locationButton;
+    }
 }

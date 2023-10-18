@@ -4,11 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelSwitcher : MonoBehaviour
 {
+    GameController gameController;
+
     Scene currentScene;
     string currentSceneName;
     int currentSceneIndex;
+
     private void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
         currentScene = SceneManager.GetActiveScene();
 
         currentSceneName = currentScene.name;
@@ -16,9 +21,6 @@ public class LevelSwitcher : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (SceneManager.GetSceneByName($"Location {currentSceneIndex + 1}") != null)
-            SceneManager.LoadScene($"Location {currentSceneIndex + 1}");
-        else
-            Debug.Log("Такой сцены не существует");
+        gameController.LoadNextLevel(currentSceneIndex);
     }
 }

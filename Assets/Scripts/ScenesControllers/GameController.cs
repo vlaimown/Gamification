@@ -10,8 +10,22 @@ public class GameController : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         data = FindObjectOfType<Data>();
-        spawnLocation = GameObject.Find(data.GetCurrentLocation()).GetComponent<Location>();
-        player.transform.position = spawnLocation.GetSpawnPoint().position;
+        //spawnLocation = GameObject.Find(data.GetCurrentLocation()).GetComponent<Location>();
+        //player.transform.position = spawnLocation.GetSpawnPoint().position;
+    }
+
+    public void LoadNextLevel(int currentSceneIndex)
+    {
+        if (SceneManager.GetSceneByName($"Location {currentSceneIndex + 1}") != null)
+        {
+            bool isUnlocked = false;
+            data.UnlockLocation($"Location {currentSceneIndex + 1}");
+            while (isUnlocked == false)
+                isUnlocked = data.IsAvailableLocation($"Location {currentSceneIndex + 1}");
+            SceneManager.LoadScene($"Location {currentSceneIndex + 1}");
+        }
+        else
+            Debug.Log("Такой сцены не существует");
     }
 
     public void BackToWorldMenu()

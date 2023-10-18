@@ -17,7 +17,7 @@ public class DontDestroy : MonoBehaviour
             {
                 if (GameObject.FindObjectsOfType<DontDestroy>()[i].objectID == objectID)
                 {
-                    Destroy(GameObject.FindObjectsOfType<DontDestroy>()[i]);
+                    Destroy(gameObject);
                 }
             }
         }
