@@ -25,6 +25,11 @@ public class GameController : MonoBehaviour
             Debug.Log("Такой сцены не существует");
     }
 
+    public void LoadMiniGame(string miniGameName)
+    {
+        SceneManager.LoadScene($"Mini Game {miniGameName}");
+    }
+
     public void BackToWorldMenu()
     {
         SceneManager.LoadScene("World Map");

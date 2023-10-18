@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/World Map.unity
     guid: 39022ceddf294f94c814ed0e85b6e8fa
   - enabled: 1
+    path: Assets/Scenes/Mini Game 1.unity
+    guid: 097abfbdeda3a8b47b7f44acf66c0670
+  - enabled: 1
     path: Assets/Scenes/Location 1.unity
     guid: b1b463e535fbe4d408595363c9b18566
   - enabled: 1
