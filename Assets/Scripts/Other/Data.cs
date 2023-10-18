@@ -15,14 +15,6 @@ public class Data : MonoBehaviour
         availableLocations.Add("Location 1");
     }
 
-    private void Update()
-    {
-        foreach (var location in availableLocations)
-        {
-            Debug.Log(location);
-        }
-    }
-
     public void UnlockLocation(string location)
     {
         if (IsAvailableLocation(location) == false)
